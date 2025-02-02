@@ -1,3 +1,3 @@
-# JustKeepLivin
+# Lotta Livin
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/jadathib/JustKeepLivin)
+L I V I N
