@@ -139,7 +139,7 @@ function App() {
                   onClick={() => setAuthModal({ isOpen: true, mode: 'register' })}
                   className="bg-white text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
                 >
-                  Start Your Journey
+                  Start Your Journey, friend
                 </button>
               )}
             </div>
