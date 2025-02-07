@@ -84,7 +84,7 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <Globe className="w-6 h-6" />
-              <h2 className="text-xl font-medium">Wanderlust Chronicles</h2>
+              <h2 className="text-xl font-medium">Lotta Livin</h2>
             </div>
             <div className="flex items-center space-x-4">
               {user ? (
