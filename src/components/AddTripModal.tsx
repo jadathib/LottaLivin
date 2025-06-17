@@ -23,8 +23,11 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
 
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      
+
       if (!user) throw new Error('You must be logged in to add a trip');
+
+      console.log('User object:', user);
+      console.log('User metadata:', user.user_metadata);
 
       const { error } = await supabase
         .from('posts')
@@ -35,13 +38,13 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
             category,
             image,
             excerpt,
-            author: user.email,
+            author: `${user.user_metadata?.firstname || ''} ${user.user_metadata?.lastname || ''}`.trim() || user.email,
             date: new Date().toISOString(),
           },
         ]);
 
       if (error) throw error;
-      
+
       toast.success('Trip added successfully!');
       onTripAdded();
       onClose();
@@ -63,9 +66,9 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
         >
           <X className="w-6 h-6" />
         </button>
-        
+
         <h2 className="text-2xl font-bold mb-6">Add New Trip</h2>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700">
@@ -80,7 +83,7 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
               required
             />
           </div>
-          
+
           <div>
             <label htmlFor="location" className="block text-sm font-medium text-gray-700">
               Location
@@ -113,7 +116,7 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
               <option value="Festivals">Festivals</option>
             </select>
           </div>
-          
+
           <div>
             <label htmlFor="image" className="block text-sm font-medium text-gray-700">
               Image URL
@@ -127,7 +130,7 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
               required
             />
           </div>
-          
+
           <div>
             <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700">
               Description
@@ -141,7 +144,7 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
               required
             />
           </div>
-          
+
           <button
             type="submit"
             disabled={loading}
