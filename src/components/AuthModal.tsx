@@ -68,7 +68,7 @@ export function AuthModal({ isOpen, onClose, mode }: AuthModalProps) {
                     {mode === 'register' && (
                         <>
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
                                     First Name
                                 </label>
                                 <input
@@ -77,11 +77,12 @@ export function AuthModal({ isOpen, onClose, mode }: AuthModalProps) {
                                     value={firstname}
                                     onChange={(e) => setFirstName(e.target.value)}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required/>
+                                    required
+                                />
                             </div>
 
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
                                     Last Name
                                 </label>
                                 <input
@@ -90,7 +91,8 @@ export function AuthModal({ isOpen, onClose, mode }: AuthModalProps) {
                                     value={lastname}
                                     onChange={(e) => setLastName(e.target.value)}
                                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                    required/>
+                                    required
+                                />
                             </div>
                         </>
 
