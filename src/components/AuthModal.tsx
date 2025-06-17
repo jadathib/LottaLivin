@@ -26,7 +26,7 @@ export function AuthModal({ isOpen, onClose, mode }: AuthModalProps) {
                     email,
                     password,
                     options: {
-                        data: { firstname }
+                        data: { firstname, lastname }
                     }
                 });
                 if (error) throw error;
