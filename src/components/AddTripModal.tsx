@@ -124,6 +124,7 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
                   id="image"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
+                  placeholder="https://www.freepik.com/free-photos-vectors/placeholder"
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   required
               />
