@@ -26,6 +26,8 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
       if (userError) throw userError;
       if (!user) throw new Error('You must be logged in to add a trip');
 
+      const imageUrl = image || 'https://via.placeholder.com/600x400?text=No+Image';
+
       const { error } = await supabase
           .from('posts')
           .insert([
@@ -33,11 +35,11 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
               title,
               location,
               category,
-              image,
+              image: imageUrl,
               excerpt,
               author: `${user.user_metadata?.firstname || ''} ${user.user_metadata?.lastname || ''}`.trim() || user.email,
               date: new Date().toISOString(),
-              user_id: user.id, // 👈 fix: attach logged-in user
+              user_id: user.id, // ✅ attaches logged-in user
             },
           ]);
 
@@ -124,9 +126,8 @@ export function AddTripModal({ isOpen, onClose, onTripAdded }: AddTripModalProps
                   id="image"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
-                  placeholder="https://www.freepik.com/free-photos-vectors/placeholder"
+                  placeholder="https://example.com/my-image.jpg"
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  required
               />
             </div>
 
